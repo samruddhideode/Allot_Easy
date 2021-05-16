@@ -96,7 +96,7 @@ class Menu:
     choice= None
     #breaks out of loop when 6 i.e. logout is selected
     while(choice!=6): 
-        img2 = open('E:\SAMRUDDHI\SY\Buffer_2.0-FINAL\images\welcome2.png', 'rb').read()
+        img2 = open('welcome2.png', 'rb').read()
         put_image(img2, width='50%')   
         if mydata.flag==0: #flag=0 indicates user has not withdrawn his application.
             #List of Student Menu Options
@@ -138,7 +138,7 @@ class Menu:
     #breaks out of loop when 8 i.e. logout is selected
     while(choice!=7):  
         #List of Admin Menu Options
-        img3 = open('E:\SAMRUDDHI\SY\Buffer_2.0-FINAL\images\welcome1.png', 'rb').read()
+        img3 = open('welcome1.png', 'rb').read()
         put_image(img3, width='30%')
         listAdminMenu = [
             'Run Seat Allotment Process',
