@@ -1,5 +1,5 @@
 '''
-Main function which provides the interface for the firs and the last page of the application.
+Main function which provides the interface for the first and the last page of the application.
 '''
 
 import time
