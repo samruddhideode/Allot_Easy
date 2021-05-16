@@ -24,6 +24,7 @@ def run_app():
         time.sleep(0.8)
     time.sleep(2)
     clear()
+    mymenu.user=None
     
     #Displays Main Menu, program works till choice is not 4(log out)
     while(mymenu.user != 4):
