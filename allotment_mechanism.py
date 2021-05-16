@@ -1,7 +1,6 @@
 from pywebio.input import *
 from pywebio.output import *
 import time
-from art import *
 import pandas as pd
 from csv import *
  
