@@ -15,7 +15,7 @@ from menu import Menu
 mymenu = Menu()  # obj of class Menu
 
 def run_app():
-#opening page interface
+    #opening page interface
     img1 = open('welcome.png', 'rb').read()
     style(put_image(img1, width='100%'),'display: block; margin-left: auto; margin-right: auto;')
     put_processbar('bar')
