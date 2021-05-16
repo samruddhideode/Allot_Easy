@@ -1,34 +1,3 @@
 pywebio
-python == 3.8.5.final.0
-pandas== 1.19.2
-pytz == 2020.1
-dateutil==  2.8.1
-pip== 20.2.4
-setuptools ==  50.3.1.post20201107
-Cython ==  0.29.21
-pytest== 6.1.1
-hypothesis== None
-sphinx ==  3.2.1
-blosc==  None
-feather == None
-xlsxwriter== 1.3.7
-lxml.etree ==  4.6.1
-html5lib ==  1.1
-pymysql ==  None
-psycopg2 ==  None
-jinja2  ==  2.11.2
-IPython  ==  7.19.0
-bs4==  4.9.3
-bottleneck==  1.3.2
-fsspec == 0.8.3
-fastparquet==  None
-gcsfs==  None
-matplotlib==  3.3.2
-numexpr== 2.7.1
-openpyxl== 3.0.5
-scipy ==  1.5.2
-sqlalchemy ==  1.3.20
-tables ==  3.6.1
-xlrd ==  1.2.0
-xlwt==  1.3.0
-numba==  0.51.2
+pandas
+flask
