@@ -12,11 +12,6 @@ user= None
 name=""
 surname=""
 pwd=None
-
-
-def pref_check(p):
-    if(p<0 or p>3):
-        return('invalid preference!')
     
 class Data:
       
