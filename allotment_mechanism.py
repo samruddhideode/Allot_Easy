@@ -25,15 +25,20 @@ class Allotment_mechanism:
         if self.allotment_done== True:
             confirm = actions('Do you want to reset the Allotment Process?', ['Reset', 'Back'],)
             if confirm=='Reset':
-                self.allotment_done= False;
-                self.vacancies={0: 15, 1: 15, 2: 15, 3: 15}
+                self.allotment_done= False; #reset allotment_done
+                self.vacancies={0: 15, 1: 15, 2: 15, 3: 15} #reset vacancies
                 global comp
+                #reset all branch lists
                 comp_allotment=[]
                 IT_allotment=[]
                 mech_allotment=[]
                 elec_allotment=[]
                 all_allotments=[comp_allotment, IT_allotment, mech_allotment, elec_allotment]
                 no_allotment = []
+                #reset all the allotmnents from the .csv file
+                df = pd.read_csv("datasheet.csv")
+                df['ALLOTMENT'] = df['ALLOTMENT'].replace({"Computer":"--", "Electronics":"--", "IT":"--", "Mechanical":"--"})
+                df.to_csv("datasheet.csv", index=False)
             else:
                 return
         else:
