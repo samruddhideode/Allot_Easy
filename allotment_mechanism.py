@@ -65,15 +65,15 @@ class Allotment_mechanism:
                 
                 if(self.vacancies[pref1]>0):
                     self.vacancies[pref1]-=1
-                    all_allotments[pref1].append((regis,dict1[regis][0]))
+                    all_allotments[pref1].append((regis,dict1[regis][0],dict1[regis][1]))
                 elif(self.vacancies[pref2]>0):
                     self.vacancies[pref2]-=1
-                    all_allotments[pref2].append((regis,dict1[regis][0]))
+                    all_allotments[pref2].append((regis,dict1[regis][0],dict1[regis][1]))
                 elif(self.vacancies[pref3]>0):
                     self.vacancies[pref3]-=1
-                    all_allotments[pref3].append((regis,dict1[regis][0]))
+                    all_allotments[pref3].append((regis,dict1[regis][0],dict1[regis][1]))
                 else:
-                    no_allotment.append((regis,dict1[regis][0]))
+                    no_allotment.append((regis,dict1[regis][0],dict1[regis][1]))
             
             
             #****************Allotment done***********************************
@@ -126,17 +126,23 @@ class Allotment_mechanism:
             for line in lines:
                 f.write(line+"\n")    
         clear()
+        
     def get_cutoffs(self, branch):
         with open("datasheet.csv",'r') as f:
             reader_object= reader(f)
             if branch=="comp":
-                last_person = comp_allotment[-1]
+                comp_allotment.sort(key = lambda x: x[2]) 
+                last_person = comp_allotment[0]
             elif branch =="it":
-                last_person = IT_allotment[-1] 
+                IT_allotment.sort(key = lambda x: x[2]) 
+                last_person = IT_allotment[0] 
             elif branch =="mech":
-                last_person = mech_allotment[-1]  
+                mech_allotment.sort(key = lambda x: x[2]) 
+                last_person = mech_allotment[0] 
             elif branch =="entc":
-                last_person = elec_allotment[-1]   
+                elec_allotment.sort(key = lambda x: x[2]) 
+                last_person = elec_allotment[0]   
+  
 
             for row in reader_object:
                 if row[0]==last_person[0] and row[1]== last_person[1]:
