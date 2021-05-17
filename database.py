@@ -100,8 +100,8 @@ class Data:
     '''*************************************************************************************'''
     def student_sign_up(self):
         data = input_group("Register",[
-            input('Input your name', name='name'),
-            input('Input your Surname', name='surname')
+            input('Input your name', name='name',required=True),
+            input('Input your Surname', name='surname',required=True)
             ], )
         
         #Check whether the person has already signed up
@@ -123,8 +123,8 @@ class Data:
         #validation of password
         while data['pswd']!=data['confirm_pswd']:
             data = input_group("Enter details",[
-                input('Set your password:', name ='pswd', type=PASSWORD),
-                input('Confirm Password', name ='confirm_pswd', type=PASSWORD)
+                input('Set your password:', name ='pswd', type=PASSWORD,required=True),
+                input('Confirm Password', name ='confirm_pswd', type=PASSWORD,required=True)
                 ])
             if data['pswd']!=data['confirm_pswd']:
                 put_error("Wrong password!")
@@ -199,8 +199,8 @@ class Data:
         if user==3:
             #if user= admin, show details of any student
             data = input_group("User info",[
-                   input('Enter Name', name='name'),
-                   input('Enter Surname', name='surname')
+                   input('Enter Name', name='name'required=True),
+                   input('Enter Surname', name='surname'required=True)
                    ])
             
             name = data['name']
@@ -250,8 +250,8 @@ class Data:
                     put_info('Cannot edit your Name and Surname')
                     surname=(lines[row_to_edit-1]).split(",")[1]
                     data = input_group('Enter Details',[
-                                       input("Enter email: ", type=TEXT, name = 'email'),
-                                       input("Enter marks: ", type=TEXT, name = 'marks')
+                                       input("Enter email: ", type=TEXT, name = 'email'required=True),
+                                       input("Enter marks: ", type=TEXT, name = 'marks',required=True')
                                        ])
                     email = data['email']
                     marks = data['marks']
