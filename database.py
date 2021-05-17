@@ -239,26 +239,15 @@ class Data:
           
     def edit_record(self): 
         #allow only if allotment is not yet done
-        global name, surname, pwd
-        row_to_edit = self.find_record(name, surname, pwd)
-        #put_text(row_to_edit)
-        if row_to_edit>0:
-            if mymachine.allotment_done== True:
-                put_error("Cannot edit the application now. Your registered details: ")
-                with open("datasheet.csv",'r') as f:
-                    reader_object = reader(f)
-                    for row in reader_object:
-                        if(row[0]==name) and row[8]==pwd:
-                            for i in range(0,7):
-                                put_text(row[i])
-                            put_success(f"\nYour alloted branch: {row[7]}") 
-                data = input_group("Return to Student Menu",[actions('', [ {'label': 'Back', 'value': 1},], name='action', help_text=None),])
-                clear()
-                return
-            else:
+        if(mymachine.allotment_done==True):
+            put_error("Cannot edit application after allotment is done!")
+        else:
+            global name, surname, pwd
+            row_to_edit = self.find_record(name, surname, pwd)
+            if row_to_edit>0:
                 with open("datasheet.csv",'r') as f:
                     lines= f.read().splitlines()
-                    put_text('Cannot edit your Name and Surname')
+                    put_info('Cannot edit your Name and Surname')
                     surname=(lines[row_to_edit-1]).split(",")[1]
                     data = input_group('Enter Details',[
                                        input("Enter email: ", type=TEXT, name = 'email'),
@@ -296,12 +285,12 @@ class Data:
                 with open("datasheet.csv",'w') as f: #overwrite
                     for line in lines:
                         f.write(line+"\n")
-                    
-        else:
-            put_error("Student Record not found. Please register yourself.")
+                        
+            else:
+                put_error("Student Record not found. Please register yourself.")
         data = input_group("Return to Student Menu",[actions('', [ {'label': 'Back', 'value': 1},], name='action', help_text=None),])
         clear()
-
+        
     def delete_record(self):
         #allow only if allotment is not yet done
         global name, surname, pwd
