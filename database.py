@@ -58,7 +58,6 @@ class Data:
         self.flag=0 # set flag to 0 whenever a user logs in.
      
     def set_cutoff_marks(self):
-        
         # global comp_allotment, IT_allotment, mech_allotment, elec_allotment
         # cutoff marks= in the rankwise sorted table, find last row of each branch. Corresponding marks of that row is cutoff marks.
         # store cutoff marks of each branch using for loop
@@ -123,7 +122,7 @@ class Data:
         #validation of password
         while data['pswd']!=data['confirm_pswd']:
             data = input_group("Enter details",[
-                input('Set your password:', name ='pswd', type=PASSWORD, required=True),
+                input('Set your password', name ='pswd', type=PASSWORD, required=True),
                 input('Confirm Password', name ='confirm_pswd', type=PASSWORD, required=True)
                 ])
             if data['pswd']!=data['confirm_pswd']:
