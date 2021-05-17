@@ -16,7 +16,7 @@ class Allotment_mechanism:
     
     def __init__(self):
         self.allotment_done= False
-        self.vacancies={0: 15, 1: 15, 2: 15, 3: 15}
+        self.vacancies={0: 120, 1: 60, 2: 60, 3: 120}
                 
     def run_allotment(self):
         
@@ -26,7 +26,7 @@ class Allotment_mechanism:
             confirm = actions('Do you want to reset the Allotment Process?', ['Reset', 'Back'],)
             if confirm=='Reset':
                 self.allotment_done= False; #reset allotment_done
-                self.vacancies={0: 15, 1: 15, 2: 15, 3: 15} #reset vacancies
+                self.vacancies={0: 120, 1: 60, 2: 60, 3: 120} #reset vacancies
                 global comp
                 #reset all branch lists
                 comp_allotment=[]
