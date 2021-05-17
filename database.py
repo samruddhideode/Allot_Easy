@@ -102,7 +102,7 @@ class Data:
         data = input_group("Register",[
             input('Input your name', name='name',required=True),
             input('Input your Surname', name='surname',required=True)
-            ], )
+            ])
         
         #Check whether the person has already signed up
         name = data['name']
