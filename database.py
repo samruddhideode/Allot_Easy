@@ -380,7 +380,8 @@ class Data:
         
         if mymachine.allotment_done== False:
             put_error("Allotment is not yet done. Please check again later.")
-            
+            data = input_group("Return to Admin Menu",[actions('', [ {'label': 'Back', 'value': 1},], name='action', help_text=None),])
+            clear()
         else:
             listBranches = [
                 'Computer',
