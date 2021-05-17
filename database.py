@@ -345,13 +345,15 @@ class Data:
             data = input_group("Return to Student Menu",[actions('', [ {'label': 'Back', 'value': 1},], name='action', help_text=None),])
         else:
             self.set_cutoff_marks()
-            put_text("Cut off marks for each branch: ") 
-            '''for key, val in self.cutoff_marks.items():
-                    if key=="IT":
-                        put_text(f"{key} :\t\t\t{val}")
-                    else:
-                        put_text(f"{key} :\t\t{val}")'''
-            put_table(self.cutoff_marks, header=['Branch','CutOff'], scope=- 1, position=- 1) 
+            put_info("Cut off marks for each branch: ") 
+            cutoff = []
+            for key in self.cutoff_marks:
+                newList = []
+                newList.append(key)
+                newList.append(self.cutoff_marks[key])
+                cutoff.append(newList)     
+            cutoff.insert(0,['Branch','CutOff'])
+            put_table(cutoff, header=None) 
             data = input_group("Return to Student Menu",[actions('', [ {'label': 'Back', 'value': 1},], name='action', help_text=None),])
         
         clear()
