@@ -53,6 +53,7 @@ class Allotment_mechanism:
             allotment_pre = df[(df['PREF1']>=0) & (df['PREF2']>=0) & (df['PREF3']>=0)]
             allotment = allotment_pre.sort_values('MARKS', ascending = False)
             dict1 = {}
+            
             for i in range(len(allotment)):
                 (surname, marks,pref1,pref2,pref3) = (allotment.iloc[i][1],allotment.iloc[i][3],allotment.iloc[i][4],allotment.iloc[i][5],allotment.iloc[i][6])
                 dict1[allotment.iloc[i][0]]= (surname,marks,pref1,pref2,pref3)
