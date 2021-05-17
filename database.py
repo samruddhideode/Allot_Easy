@@ -12,6 +12,11 @@ user= None
 name=""
 surname=""
 pwd=None
+
+
+def pref_check(p):
+    if(p<0 or p>3):
+        return('invalid preference!')
     
 class Data:
       
@@ -58,6 +63,7 @@ class Data:
         self.flag=0 # set flag to 0 whenever a user logs in.
      
     def set_cutoff_marks(self):
+        
         # global comp_allotment, IT_allotment, mech_allotment, elec_allotment
         # cutoff marks= in the rankwise sorted table, find last row of each branch. Corresponding marks of that row is cutoff marks.
         # store cutoff marks of each branch using for loop
@@ -101,8 +107,8 @@ class Data:
         data = input_group("Register",[
             input('Input your name', name='name',required=True),
             input('Input your Surname', name='surname',required=True)
-            ])
-        
+            ], )
+            
         #Check whether the person has already signed up
         name = data['name']
         surname = data['surname']
@@ -122,8 +128,8 @@ class Data:
         #validation of password
         while data['pswd']!=data['confirm_pswd']:
             data = input_group("Enter details",[
-                input('Set your password', name ='pswd', type=PASSWORD, required=True),
-                input('Confirm Password', name ='confirm_pswd', type=PASSWORD, required=True)
+                input('Set your password:', name ='pswd', type=PASSWORD,required=True),
+                input('Confirm Password', name ='confirm_pswd', type=PASSWORD,required=True)
                 ])
             if data['pswd']!=data['confirm_pswd']:
                 put_error("Wrong password!")
@@ -198,8 +204,8 @@ class Data:
         if user==3:
             #if user= admin, show details of any student
             data = input_group("User info",[
-                   input('Enter Name', name='name', required=True),
-                   input('Enter Surname', name='surname', required=True)
+                   input('Enter Name', name='name'),
+                   input('Enter Surname', name='surname')
                    ])
             
             name = data['name']
@@ -249,8 +255,8 @@ class Data:
                     put_info('Cannot edit your Name and Surname')
                     surname=(lines[row_to_edit-1]).split(",")[1]
                     data = input_group('Enter Details',[
-                                       input("Enter email: ", type=TEXT, name = 'email', required=True),
-                                       input("Enter marks: ", type=TEXT, name = 'marks', required=True')
+                                       input("Enter email: ", type=TEXT, name = 'email'),
+                                       input("Enter marks: ", type=TEXT, name = 'marks')
                                        ])
                     email = data['email']
                     marks = data['marks']
@@ -289,7 +295,7 @@ class Data:
                 put_error("Student Record not found. Please register yourself.")
         data = input_group("Return to Student Menu",[actions('', [ {'label': 'Back', 'value': 1},], name='action', help_text=None),])
         clear()
-        
+
     def delete_record(self):
         #allow only if allotment is not yet done
         global name, surname, pwd
