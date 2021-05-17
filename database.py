@@ -410,14 +410,19 @@ class Data:
         if mymachine.allotment_done== False:
             put_error("Allotment is not yet done. Please check again later.")
         else:   
-            no_allot_list= mymachine.get_no_allotment_data() 
-            put_error(f"{len(no_allot_list)} Student(s) were not alloted any seat:")
-            
-            no_allot_list=[]
-            for person in no_allotment:
-                no_allot_list.append((person[0]+" "+person[1],'NA'))
-            no_allot_list.insert(0,('NAME','ALLOTMENT'))
-            put_table(no_allot_list)
+            no_allot = []
+            with open("datasheet.csv",'r') as f:
+                cnt = 0
+                reader_object = reader(f)
+                for row in reader_object:
+                    if(row[7]=="--"):
+                        cnt = cnt+1
+                        name = [row[0]+" "+row[1]]
+                        name.insert(0,cnt)
+                        name.append("NA")
+                        no_allot.append(name)
+            no_allot.insert(0,['No.','NAME', 'ALLOTMENT'])
+            put_table(no_allot, header=None)   
         data = input_group("Return to Admin Menu",[actions('', [ {'label': 'Back', 'value': 1},], name='action', help_text=None),])
         clear()
      
