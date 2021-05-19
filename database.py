@@ -467,7 +467,8 @@ class Data:
         search_student,
         edit_record,
         delete_record,
-        view_cutoff_marks
+        view_cutoff_marks,
+        change_password
         ]
     
     admin_options=[
