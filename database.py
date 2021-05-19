@@ -132,7 +132,7 @@ class Data:
         data = input_group("Enter details",[
             input('Set your password:', name ='pswd', type=PASSWORD,required=True),
             input('Confirm Password', name ='confirm_pswd', type=PASSWORD,required=True)
-            ],validation = confirm_pswd)
+            ],)
              
         name = data['name']
         surname = data['surname']
