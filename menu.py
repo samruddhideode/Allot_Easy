@@ -60,8 +60,8 @@ class Menu:
     
     if user_inp==2 : #Login as student is selected
         data = input_group("Enter details",[
-            input('Enter name' , name = 'name'),
-            input('Enter surname', name ='surname')
+            input('Enter name' , name = 'name', required =True),
+            input('Enter surname', name ='surname', required = True)
             ])
         
         name = data['name']
