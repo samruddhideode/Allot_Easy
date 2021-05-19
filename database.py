@@ -121,7 +121,7 @@ class Data:
         return 0
    
     '''*************************************************************************************'''
-   def student_sign_up(self):
+    def student_sign_up(self):
         data = input_group("Register",[
             input('Input your name', name='name',required=True),
             input('Input your Surname', name='surname',required=True)
