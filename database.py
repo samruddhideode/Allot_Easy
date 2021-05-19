@@ -32,7 +32,7 @@ def acc_exists(data):
         reader_obj= reader(f_object)
         for row in reader_obj:
             if row[0]==data['name'] and row[1]==data['surname']:
-                return('name', 'Account with this name already exists!')
+                return('name', "Account with this name already exists!")
             
 '''*******************************************************************************************'''
 
@@ -125,8 +125,7 @@ class Data:
         data = input_group("Register",[
             input('Input your name', name='name',required=True),
             input('Input your Surname', name='surname',required=True)
-            ], validate=acc_exists )
-        #Check whether the person has already signed up 
+            ], validate=acc_exists ) #Check whether the person has already signed up 
         name = data['name']
         surname= data['surname']
         
@@ -286,7 +285,7 @@ class Data:
                     pref3 = dictBranches[ch3]
                     allotment = "--"
                     
-                    lines[row_to_edit-1]=f"{name},{surname},{email},{marks},{pref1},{pref2},{pref3},'--',{pwd}"
+                    lines[row_to_edit-1]=f"{name},{surname},{email},{marks},{pref1},{pref2},{pref3},--,{pwd}"
                     
                 with open("datasheet.csv",'w') as f: #overwrite
                     for line in lines:
