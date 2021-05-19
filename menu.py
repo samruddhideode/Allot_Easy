@@ -95,7 +95,7 @@ class Menu:
     clear() 
     choice= None
     #breaks out of loop when 6 i.e. logout is selected
-    while(choice!=6): 
+    while(choice!=7): 
         img2 = open('welcome2.png', 'rb').read()
         put_image(img2, width='50%')   
         if mydata.flag==0: #flag=0 indicates user has not withdrawn his application.
@@ -103,9 +103,10 @@ class Menu:
             listStudentMenu = [
                 'View Seat Matrix',
                 'Check application status',
-                'Edit your application', 
+                'Complete your application', 
                 'Withdraw Application',
                 'View Cutoff Marks',
+                'Change password',
                 'Logout'
                 ]
             ch = radio(label='STUDENT MENU', options=listStudentMenu, inline=False, validate=None, name=None, value=None, required=True, help_text=None)
@@ -113,19 +114,20 @@ class Menu:
             dictStudentMenu = {
                 'View Seat Matrix':1,
                 'Check application status':2,
-                'Edit your application':3,
+                'Complete your application':3,
                 'Withdraw Application':4,
                 'View Cutoff Marks':5,
-                'Logout':6
+                'Change password':6,
+                'Logout':7
                 }
             choice= dictStudentMenu[ch]
             
         else: 
             '''flag=1 is the case where user has withdrawn the application. 
             So we do not show him any other option and force him to logout.'''
-            choice=6
+            choice=7
             
-        if choice!=6:
+        if choice!=7:
             '''When any choice other than logout is selected, 
             call the corresponding function from the functions list in database.py'''
             mydata.student_options[choice-1](mydata)
