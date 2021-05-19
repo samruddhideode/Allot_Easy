@@ -126,16 +126,15 @@ class Data:
             input('Input your name', name='name',required=True),
             input('Input your Surname', name='surname',required=True)
             ], validate=acc_exists )
-            
-        #Check whether the person has already signed up
-                        
+        #Check whether the person has already signed up 
+        name = data['name']
+        surname= data['surname']
+        
         data = input_group("Enter details",[
             input('Set your password:', name ='pswd', type=PASSWORD,required=True),
             input('Confirm Password', name ='confirm_pswd', type=PASSWORD,required=True)
             ],)
              
-        name = data['name']
-        surname = data['surname']
         pswd = data['pswd']
         with open('datasheet.csv', 'a+', newline='') as f_object: 
             writer_object = writer(f_object) 
