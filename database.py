@@ -13,10 +13,19 @@ name=""
 surname=""
 pwd=None
 
-
-def pref_check(p):
-    if(p<0 or p>3):
-        return('invalid preference!')
+#validations
+def pswd_match(data):
+    global pwd
+    if(data['org_pswd']!=pwd):
+        return('org_pswd', "Password doesn't match!")
+    if(data['new_pswd']!=data['new_pswd_1']):
+        return('new_pswd', "Passwords don't match!")
+    if(pwd==['new_pswd']):
+        return('new_pswd', "New password cannot be same as old password!")
+    
+def confirm_pswd(data):
+    if(data['pswd']!=data['confirm_pswd']):
+        return('confirm_pswd', "Password doesn't match")
     
 class Data:
       
@@ -121,18 +130,11 @@ class Data:
                     clear()
                     return
 
-        #If they havent signed up already, ask them to set password and add a new record. 
-        data['pswd'] = 'a' #some arbitrary pswd
-        data['confirm_pswd']='b' #some arbitrary pswd
-        
-        #validation of password
-        while data['pswd']!=data['confirm_pswd']:
-            data = input_group("Enter details",[
-                input('Set your password:', name ='pswd', type=PASSWORD,required=True),
-                input('Confirm Password', name ='confirm_pswd', type=PASSWORD,required=True)
-                ])
-            if data['pswd']!=data['confirm_pswd']:
-                put_error("Wrong password!")
+        '''If they havent signed up already, ask them to set password and add a new record.''' 
+        data = input_group("Enter details",[
+            input('Set your password:', name ='pswd', type=PASSWORD,required=True),
+            input('Confirm Password', name ='confirm_pswd', type=PASSWORD,required=True)
+            ],validation = confirm_pswd)
                 
         pswd = data['pswd']
         with open('datasheet.csv', 'a+', newline='') as f_object: 
@@ -153,7 +155,7 @@ class Data:
     '''*******************STUDENT FUNCTIONS*************************************'''
     
     def view_seatmatrix(self):
-        #print total no. of seats available in each branch of college.
+        '''print total no. of seats available in each branch of college.'''
         put_table([
         ['Branch','Vacancies'],
         ['Computer','120'],
@@ -168,7 +170,7 @@ class Data:
     
     def search_student(self):
         if user==2:
-            #if user= student, show only his record.(all columns)
+            '''if user= student, show only his record.(all columns)'''
             global name,surname,pwd
             with open("datasheet.csv",'r') as f:
                 reader_object = reader(f)
@@ -243,7 +245,7 @@ class Data:
             clear()
           
     def edit_record(self): 
-        #allow only if allotment is not yet done
+        '''allow only if allotment is not yet done'''
         if(mymachine.allotment_done==True):
             put_error("Cannot edit application after allotment is done!")
         else:
@@ -297,7 +299,7 @@ class Data:
         clear()
 
     def delete_record(self):
-        #allow only if allotment is not yet done
+        '''allow only if allotment is not yet done'''
         global name, surname, pwd
         if mymachine.allotment_done== True:
             put_error("Cannot withdraw the application now. Your registered details: ")
@@ -333,7 +335,7 @@ class Data:
             clear()
      
     def view_cutoff_marks(self):
-        #only if allotment is done, display this table
+        '''only if allotment is done, display this table'''
         if mymachine.allotment_done== False:
             put_error("Allotment is not yet done. Please check again later.")
             data = input_group("Return to Student Menu",[actions('', [ {'label': 'Back', 'value': 1},], name='action', help_text=None),])
@@ -354,8 +356,7 @@ class Data:
         
     def change_password(self):
         global name, surname
-        put_text(name, surname)
-        '''data = input_group("Change Password", [
+        data = input_group("Change Password", [
             input('Enter current password: ', name = 'org_pswd', required=True, type=PASSWORD),
             input('Enter current password: ', name = 'new_pswd', required=True, type=PASSWORD),
             input('Enter current password: ', name = 'new_pswd_1', required=True, type=PASSWORD),            
@@ -373,13 +374,13 @@ class Data:
     
         data = input_group("Return to Student Menu",[actions('', [ {'label': 'Back', 'value': 1},], name='action', help_text=None),])
         
-        clear()'''
+        clear()
         
     '''**********************ADMIN MENU****************************************'''
     def view_all_registrations(self):
-        # print table of all records (name, surname, email, marks)
         df = pd.read_csv('datasheet.csv')
         if (mymachine.allotment_done== True):
+            ''' if allotment is done, don't print preference details'''
             registrations = df[["NAME", "SURNAME","EMAIL_ID", "MARKS", "ALLOTMENT"]]
             regList = registrations.values.tolist()
             regList.insert(0,['NAME','SURNAME','EMAIL_ID','MARKS','ALLOTMENT'])
@@ -387,6 +388,7 @@ class Data:
             put_table(regList,header=None)
         
         else:
+            '''if allotment is not done, print marks and preference of a student'''
             put_error("Allotment not yet done...")
             registrations = df[["NAME", "SURNAME","EMAIL_ID","MARKS","PREF1","PREF2","PREF3"]]
             regList = registrations.values.tolist()
@@ -430,7 +432,7 @@ class Data:
             clear()
       
     def students_without_allotment(self):
-        # allow only after allotment is done
+        '''allow only after allotment is done'''
         if mymachine.allotment_done== False:
             put_error("Allotment is not yet done. Please check again later.")
         else:   
