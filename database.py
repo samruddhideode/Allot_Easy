@@ -34,6 +34,9 @@ def acc_exists(data):
             if row[0]==data['name'] and row[1]==data['surname']:
                 return('name', "Account with this name already exists!")
             
+def check_pswd(p):
+    if(p!=pwd):
+        return("Password doesn't match")
 '''*******************************************************************************************'''
 
 class Data:
@@ -297,7 +300,7 @@ class Data:
         clear()
 
     def delete_record(self):
-        '''allow only if allotment is not yet done'''
+        #allow only if allotment is not yet done
         global name, surname, pwd
         if mymachine.allotment_done== True:
             put_error("Cannot withdraw the application now. Your registered details: ")
@@ -311,25 +314,22 @@ class Data:
         else:    
             confirmation = radio("Do you wish to remove your record permanently?", options= ['yes','no'])
             if confirmation == 'yes' :
-                password= input("Enter your password: ", type=TEXT)
-                if(password==pwd):
+                password= input("Enter your password: ", type=PASSWORD, validate=check_pswd)
+                row_to_edit = self.find_record(name, surname, pwd)
+                if row_to_edit>0:
+                    with open("datasheet.csv",'r') as f:
+                        lines= f.read().splitlines()
+                        del lines[row_to_edit-1]
+                    with open("datasheet.csv",'w') as f:
+                        for line in lines:
+                            f.write(line+"\n")
+                    self.flag=1
+                    time.sleep(2)
                     put_success("Your application was removed from list")
-                    row_to_edit = self.find_record(name, surname, pwd)
-                    if row_to_edit>0:
-                        with open("datasheet.csv",'r') as f:
-                            lines= f.read().splitlines()
-                            del lines[row_to_edit-1]
-                        with open("datasheet.csv",'w') as f:
-                        # overwrite
-                            for line in lines:
-                                f.write(line+"\n")
-                        self.flag=1
-                    else: 
-                        return
                 else:
-                    put_error('Incorrect Password!')
+                    put_error("Student Record not found. Please register yourself.") 
             else:
-                put_error("Student Record not found. Please register yourself.")           
+                return
             clear()
      
     def view_cutoff_marks(self):
