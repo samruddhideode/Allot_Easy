@@ -133,7 +133,7 @@ class Data:
         data = input_group("Enter details",[
             input('Set your password:', name ='pswd', type=PASSWORD,required=True),
             input('Confirm Password', name ='confirm_pswd', type=PASSWORD,required=True)
-            ],)
+            ],validate =confirm_pswd )
              
         pswd = data['pswd']
         with open('datasheet.csv', 'a+', newline='') as f_object: 
