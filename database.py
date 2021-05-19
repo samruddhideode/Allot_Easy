@@ -26,7 +26,16 @@ def pswd_match(data):
 def confirm_pswd(data):
     if(data['pswd']!=data['confirm_pswd']):
         return('confirm_pswd', "Password doesn't match")
-    
+ 
+def acc_exists(data):
+    with open ('datasheet.csv', 'r') as f_object: 
+        reader_obj= reader(f_object)
+        for row in reader_obj:
+            if row[0]==data['name'] and row[1]==data['surname']:
+                return('name', 'Account with this name already exists!')
+            
+'''*******************************************************************************************'''
+
 class Data:
       
     def __init__(self):
@@ -112,30 +121,21 @@ class Data:
         return 0
    
     '''*************************************************************************************'''
-    def student_sign_up(self):
+   def student_sign_up(self):
         data = input_group("Register",[
             input('Input your name', name='name',required=True),
             input('Input your Surname', name='surname',required=True)
-            ], )
+            ], validate=acc_exists )
             
         #Check whether the person has already signed up
-        name = data['name']
-        surname = data['surname']
-        with open ('datasheet.csv', 'r') as f_object: 
-            reader_obj= reader(f_object)
-            for row in reader_obj:
-                if row[0]==name and row[1]==surname:
-                    put_error(f"Account already exists for {name} {surname}.")
-                    data = input_group("Return to Student Menu",[actions('', [ {'label': 'Back', 'value': 1},], name='action', help_text=None),])
-                    clear()
-                    return
-
-        '''If they havent signed up already, ask them to set password and add a new record.''' 
+                        
         data = input_group("Enter details",[
             input('Set your password:', name ='pswd', type=PASSWORD,required=True),
             input('Confirm Password', name ='confirm_pswd', type=PASSWORD,required=True)
             ],validation = confirm_pswd)
-                
+             
+        name = data['name']
+        surname = data['surname']
         pswd = data['pswd']
         with open('datasheet.csv', 'a+', newline='') as f_object: 
             writer_object = writer(f_object) 
