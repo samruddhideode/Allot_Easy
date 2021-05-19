@@ -356,8 +356,8 @@ class Data:
         global name, surname
         data = input_group("Change Password", [
             input('Enter current password: ', name = 'org_pswd', required=True, type=PASSWORD),
-            input('Enter current password: ', name = 'new_pswd', required=True, type=PASSWORD),
-            input('Enter current password: ', name = 'new_pswd_1', required=True, type=PASSWORD),            
+            input('Enter new password: ', name = 'new_pswd', required=True, type=PASSWORD),
+            input('Confirm new password: ', name = 'new_pswd_1', required=True, type=PASSWORD),            
             ], validate = pswd_match)
         org_pswd = data['org_pswd']
         new_pswd = data['new_pswd']
