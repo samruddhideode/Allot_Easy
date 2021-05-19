@@ -352,6 +352,28 @@ class Data:
         
         clear()
         
+    def change_password(self):
+        global name, surname
+        data = input_group("Change Password", [
+            input('Enter current password: ', name = 'org_pswd', required=True, type=PASSWORD),
+            input('Enter current password: ', name = 'new_pswd', required=True, type=PASSWORD),
+            input('Enter current password: ', name = 'new_pswd_1', required=True, type=PASSWORD),            
+            ], validate = pswd_match)
+        org_pswd = data['org_pswd']
+        new_pswd = data['new_pswd']
+        new_pswd_1 = data['new_pswd_1']
+        
+    
+        df = pd.read_csv("datasheet.csv")
+        row = df[(df['NAME'] == name) & (df['SURNAME'] == surname)].index[0]
+        df.iat[row,8] = new_pswd_1    
+        df.to_csv('datasheet.csv', index = False)
+        put_success('Password successfully changed!')
+    
+        data = input_group("Return to Student Menu",[actions('', [ {'label': 'Back', 'value': 1},], name='action', help_text=None),])
+        
+        clear()
+        
     '''**********************ADMIN MENU****************************************'''
     def view_all_registrations(self):
         # print table of all records (name, surname, email, marks)
