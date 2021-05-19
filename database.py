@@ -175,7 +175,7 @@ class Data:
                 for row in reader_object:
                     if(row[0]==name) and (row[1]==surname) and row[8]==pwd:
                         if(row[4] == '-1' and row[5] == '-1' and row[6] == '-1'):
-                            put_error("Your Application is incomplete, please go to ' Edit Your Application' to complete your application")
+                            put_error("Please Complete your Application first")
                             data = input_group("Return to Student Menu",[actions('', [ {'label': 'Back', 'value': 1},], name='action', help_text=None),])
                             clear()
                             return
