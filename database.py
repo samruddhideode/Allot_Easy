@@ -354,7 +354,8 @@ class Data:
         
     def change_password(self):
         global name, surname
-        data = input_group("Change Password", [
+        put_text(name, surname)
+        '''data = input_group("Change Password", [
             input('Enter current password: ', name = 'org_pswd', required=True, type=PASSWORD),
             input('Enter current password: ', name = 'new_pswd', required=True, type=PASSWORD),
             input('Enter current password: ', name = 'new_pswd_1', required=True, type=PASSWORD),            
@@ -372,7 +373,7 @@ class Data:
     
         data = input_group("Return to Student Menu",[actions('', [ {'label': 'Back', 'value': 1},], name='action', help_text=None),])
         
-        clear()
+        clear()'''
         
     '''**********************ADMIN MENU****************************************'''
     def view_all_registrations(self):
