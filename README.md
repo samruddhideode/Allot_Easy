@@ -1,7 +1,7 @@
 # Allot Easy
 This is a group project as a part of the Buffer 2.0 project series organised by Team Loop of Cummins College of Engineering, Pune.
 Students can apply for a degree program at an engineering college. Students are admitted taking in consideration their marks and course preferences. 
-This project aims to simulate the admission process for Engineering Colleges every year in Maharashtra.
+This project aims to simulate the admission process for Engineering Colleges that takes place every year in Maharashtra.
 
 The code is divided mainly into 2 parts:
 Admin and Student.
