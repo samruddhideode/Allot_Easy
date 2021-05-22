@@ -150,7 +150,7 @@ class Data:
             writer_object.writerow(record) 
             f_object.close()
         put_success("\nYou have signed up successfully!")
-        data = input_group("Return to Student Menu",[actions('', [ {'label': 'Back', 'value': 1},], name='action', help_text=None),])
+        data = input_group("Return to Login Menu",[actions('', [ {'label': 'Back', 'value': 1},], name='action', help_text=None),])
         clear()
         
     '''*******************STUDENT FUNCTIONS*************************************'''
