@@ -52,28 +52,25 @@ class Allotment_mechanism:
             df = pd.read_csv("datasheet.csv")
             allotment_pre = df[(df['PREF1']>=0) & (df['PREF2']>=0) & (df['PREF3']>=0)]
             allotment = allotment_pre.sort_values('MARKS', ascending = False)
+            print(allotment)
             dict1 = {}
             
             for i in range(len(allotment)):
-                (surname, marks,pref1,pref2,pref3) = (allotment.iloc[i][1],allotment.iloc[i][3],allotment.iloc[i][4],allotment.iloc[i][5],allotment.iloc[i][6])
-                dict1[allotment.iloc[i][0]]= (surname,marks,pref1,pref2,pref3)
-
-            for regis in dict1:
-                pref1 = dict1[regis][2]
-                pref2 = dict1[regis][3]
-                pref3 = dict1[regis][4]
-                
+                (name, surname, marks,pref1,pref2,pref3) = (allotment.iloc[i][0], allotment.iloc[i][1],
+                                                            allotment.iloc[i][3], allotment.iloc[i][4],
+                                                            allotment.iloc[i][5], allotment.iloc[i][6])
+        
                 if(self.vacancies[pref1]>0):
                     self.vacancies[pref1]-=1
-                    all_allotments[pref1].append((regis,dict1[regis][0],dict1[regis][1]))
+                    all_allotments[pref1].append((name, surname, marks))
                 elif(self.vacancies[pref2]>0):
                     self.vacancies[pref2]-=1
-                    all_allotments[pref2].append((regis,dict1[regis][0],dict1[regis][1]))
+                    all_allotments[pref2].append((name, surname, marks))
                 elif(self.vacancies[pref3]>0):
                     self.vacancies[pref3]-=1
-                    all_allotments[pref3].append((regis,dict1[regis][0],dict1[regis][1]))
+                    all_allotments[pref3].append((name, surname, marks))
                 else:
-                    no_allotment.append((regis,dict1[regis][0],dict1[regis][1]))
+                    no_allotment.append((name, surname, marks))
             
             
             #****************Allotment done***********************************
