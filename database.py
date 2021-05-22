@@ -303,14 +303,12 @@ class Data:
         #allow only if allotment is not yet done
         global name, surname, pwd
         if mymachine.allotment_done== True:
-            put_error("Cannot withdraw the application now. Your registered details: ")
+            put_error("Cannot withdraw the application after allotment is done. ")
             with open("datasheet.csv",'r') as f:
                 reader_object = reader(f)
                 for row in reader_object:
                     if row[0]==name and row[1]==surname and row[8]==pwd:
-                        for i in range(0,7):
-                            put_text(row[i])
-                        put_success(f"\nYour alloted branch: {row[7]}")  
+                        put_success(f"\nYou have been alloted a seat in {row[7]} department")  
         else:    
             confirmation = radio("Do you wish to remove your record permanently?", options= ['yes','no'])
             if confirmation == 'yes' :
