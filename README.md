@@ -7,22 +7,6 @@ Visit our [website](allotment123.herokuapp.com) to view the project or view the 
 ### What is the project objective?
 This project aims to **simulate the admission process** for Engineering Colleges every year in Maharashtra. Students can apply for a degree program at an engineering college using this system. Allot Easy is a completely merit based allotment system. Students are admitted taking in consideration their Common Entrance Test (CET) marks and course preferences.
 
-----
-#### Allot Easy Web App Screenshots
-
-<table>
-  <tr>
-    <td>Login Menu page</td>
-     <td>Student Menu page</td>
-     <td>Admin Menu page</td>
-  </tr>
-  <tr>
-    <td><img src="screenshots/Login_page.png" width=auto height=auto></td>
-    <td><img src="screenshots/Student_menu_page.png" width=auto height=auto ></td>
-    <td><img src="screenshots/Admin_menu_page.png" width=auto height=auto></td>
-  </tr>
- </table>
-
 ### Features:
 The code is divided into different classes: menu, database, allotment_mechanism. 
 Each file contains a class which has the related data members and functions defined in it. 
