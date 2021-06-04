@@ -1,7 +1,7 @@
 # Allot Easy
 
 This is an *application based* group project for the Buffer 2.0 project series organised by Team Loop of Cummins College of Engineering, Pune. 
-Visit our [webiste] (allotment123.herokuapp.com) to view the project or view the [Demo video](https://youtu.be/k4_MUenXDzg)
+Visit our [webiste](http://allotment123.herokuapp.com) to view the project or view the [Demo video](https://youtu.be/k4_MUenXDzg)
 
 ---
 ### What is the project objective?
